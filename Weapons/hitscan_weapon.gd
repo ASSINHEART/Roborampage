@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 			shoot()
 	weapon_mesh.position = weapon_mesh.position.lerp(weapon_position,delta * 10.0)
 
-
 func shoot() -> void:
 	cool_down_timer.start(1.0 / firerate)
 	muzzle_flash.restart()
