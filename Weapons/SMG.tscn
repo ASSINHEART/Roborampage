@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6rptilr6e57d"]
+[gd_scene load_steps=9 format=3 uid="uid://b6rptilr6e57d"]
 
 [ext_resource type="PackedScene" uid="uid://dqch8356j5h1f" path="res://Weapons/hitscan_weapon.tscn" id="1_hrtej"]
+[ext_resource type="PackedScene" uid="uid://c34t4vahtxb4d" path="res://Assets/sparks.tscn" id="2_i2xpi"]
 [ext_resource type="PackedScene" uid="uid://ba2egwljhy8ss" path="res://Weapons/SMG.glb" id="2_ops1r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ops1r"]
@@ -29,12 +30,14 @@ size = Vector3(0.1, 0.1, 0.1)
 [node name="SMG" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash") instance=ExtResource("1_hrtej")]
 weapon_mesh = NodePath("SMG")
 muzzle_flash = NodePath("MuzzleFlash")
+sparks = ExtResource("2_i2xpi")
+automatic = true
 
 [node name="SMG" parent="." index="1" instance=ExtResource("2_ops1r")]
-transform = Transform3D(1, -0.000541052, 0, 0.000541052, 1, 0, 0, 0, 1, 0.7, -0.35, -1)
+transform = Transform3D(1, -0.000541052, 0, 0.000541052, 1, 0, 0, 0, 1, 0.7, -0.35, -1.8)
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.3, -2.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.3, -2.85083)
 material_override = SubResource("StandardMaterial3D_ops1r")
 cast_shadow = 0
 emitting = false
@@ -45,3 +48,5 @@ fixed_fps = 60
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_ops1r")
 draw_pass_1 = SubResource("BoxMesh_i2xpi")
+
+[editable path="SMG"]

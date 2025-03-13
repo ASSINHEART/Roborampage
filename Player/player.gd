@@ -5,16 +5,22 @@ const SPEED = 5.0
 var mouse_motion = Vector2.ZERO
 @export var jump_height: float = 1.0
 @export var fall_speed: float = 2.5
-@onready var camera_pivot: Node3D = $CameraPivot
-
 @export var max_hitpoints := 100
+
+@onready var camera_pivot: Node3D = $CameraPivot
+@onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
+@onready var game_over_menu: Control = $GameOverMenu
+
 var hitpoints: int = max_hitpoints:
 	set(value):
+		if(value < hitpoints):
+			damage_animation_player.stop(false)
+			damage_animation_player.play()
 		hitpoints = value
-		print(hitpoints)
+		damage_animation_player.play("TakeDamage")
 		if(hitpoints <= 0):
-			print("You dead")
-			get_tree().quit()
+			game_over_menu.game_over()
+			
 	get:
 		return hitpoints
 

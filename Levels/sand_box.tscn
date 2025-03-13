@@ -25,6 +25,7 @@ environment = SubResource("Environment_ebqie")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.117798, 0.859996, -0.496519, 2.62959e-09, 0.5, 0.866026, 0.993038, 0.102016, -0.0588988, 2.52011, 11.5793, 9.78791)
+layers = 3
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_62ecr")]
@@ -174,3 +175,4 @@ material = ExtResource("3_3lfcp")
 
 [node name="Enemy" parent="." instance=ExtResource("4_3lfcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28093, 2.04634, -17.0659)
+attack_damage = 20

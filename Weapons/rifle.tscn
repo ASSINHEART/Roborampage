@@ -1,42 +1,42 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt7a1k1qnkiaj"]
+[gd_scene load_steps=9 format=3 uid="uid://c1ws8134hy5ta"]
 
-[ext_resource type="PackedScene" uid="uid://b8pfo1k3fdkgs" path="res://Assets/hitscan_weapon.tscn" id="1_x10na"]
-[ext_resource type="PackedScene" uid="uid://c3a80q7m75xir" path="res://Weapons/Rifle.glb" id="2_r4e1a"]
+[ext_resource type="PackedScene" uid="uid://dqch8356j5h1f" path="res://Weapons/hitscan_weapon.tscn" id="1_ul1sp"]
+[ext_resource type="PackedScene" uid="uid://c34t4vahtxb4d" path="res://Assets/sparks.tscn" id="2_sli3v"]
+[ext_resource type="PackedScene" uid="uid://c3a80q7m75xir" path="res://Weapons/Rifle.glb" id="3_ul1sp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdrv4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ops1r"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 3.0
 
-[sub_resource type="Curve" id="Curve_4gqcf"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_i2xpi"]
+_data = [Vector2(0, 0.786517), 0.0, 0.0, 0, 0, Vector2(1, 0.011236), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_wr5b8"]
-curve = SubResource("Curve_4gqcf")
+[sub_resource type="CurveTexture" id="CurveTexture_54bti"]
+curve = SubResource("Curve_i2xpi")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25ndh"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ops1r"]
 direction = Vector3(0, 0, -1)
 spread = 8.0
 initial_velocity_min = 6.0
 initial_velocity_max = 8.0
 gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_wr5b8")
+scale_curve = SubResource("CurveTexture_54bti")
 
-[sub_resource type="BoxMesh" id="BoxMesh_vf7nc"]
+[sub_resource type="BoxMesh" id="BoxMesh_i2xpi"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="rifle" node_paths=PackedStringArray("weapon", "muzzle_flash") instance=ExtResource("1_x10na")]
-fire_rate = 8.0
-recoil = 0.3
-weapon = NodePath("Rifle")
+[node name="Rifle" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash") instance=ExtResource("1_ul1sp")]
+firerate = 8.0
+weapon_mesh = NodePath("Rifle")
 weapon_damage = 70
 muzzle_flash = NodePath("MuzzleFlash")
+sparks = ExtResource("2_sli3v")
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.3, -2.8)
-layers = 2
-material_override = SubResource("StandardMaterial3D_bdrv4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.374822, -3.15264)
+material_override = SubResource("StandardMaterial3D_ops1r")
 cast_shadow = 0
 emitting = false
 lifetime = 0.07
@@ -44,11 +44,11 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 local_coords = true
-process_material = SubResource("ParticleProcessMaterial_25ndh")
-draw_pass_1 = SubResource("BoxMesh_vf7nc")
+process_material = SubResource("ParticleProcessMaterial_ops1r")
+draw_pass_1 = SubResource("BoxMesh_i2xpi")
 
-[node name="Rifle" parent="." index="3" instance=ExtResource("2_r4e1a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.3, -1.4)
+[node name="Rifle" parent="." index="3" instance=ExtResource("3_ul1sp")]
+transform = Transform3D(1, -0.000541052, 0, 0.000541052, 1, 0, 0, 0, 1, 0.7, -0.35, -1.8)
 
 [node name="Part_104" parent="Rifle" index="0"]
 layers = 2
