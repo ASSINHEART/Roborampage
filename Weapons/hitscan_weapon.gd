@@ -5,7 +5,6 @@ extends Node3D
 @export var weapon_mesh: =Node3D
 @export var weapon_damage := 10
 @export var muzzle_flash: GPUParticles3D
-
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var cool_down_timer: Timer = $CoolDownTimer
 @onready var weapon_position: Vector3 = weapon_mesh.position
